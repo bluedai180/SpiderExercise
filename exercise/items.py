@@ -6,6 +6,5 @@
 from scrapy.item import Item, Field
 
 class ExerciseItem(Item):
-    title = scrapy.Field()
-    name = scrapy.Field()
-    image = scrapy.Field()
+    title = Field()
+    link = Field()

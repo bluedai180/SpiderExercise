@@ -13,3 +13,5 @@ SPIDER_MODULES = ['exercise.spiders']
 NEWSPIDER_MODULE = 'exercise.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
+ITEM_PIPLINES = {'jirou_data_utf8.json' : 300}
+

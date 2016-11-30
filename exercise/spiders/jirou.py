@@ -1,15 +1,25 @@
 import scrapy
 
+from exercise.items import ExerciseItem
+
+
 class DmozSpider(scrapy.Spider):
-    name = "dmoz"
-    allowed_domains = ["www.nzjsw.com"]
+    name = "exercise"
+    allowed_domains = ["jirou.com"]
     start_urls = [
-        "http://www.nzjsw.com/tuijian/duanlian/yaobu.html"
+        "http://www.jirou.com/"
     ]
 
     def parse(self, response):
-        filename = 'jirou.html'
-        with open(filename, 'wb') as f:
-            f.write(response.body)
-        title = response.xpath('//title/text()').extract()
-        print(title)
+        sites = response.xpath('//div[@class="content6"]')
+        items = []
+        for site in sites:
+            item = ExerciseItem()
+            title = site.xpath('a/text()').extract()
+            link = site.xpath('a/@href').extract()
+
+            item['title'] = [t.encode('utf-8') for t in title]
+            item['link'] = [l.encode('utf-8') for l in link]
+
+            items.append(item)
+        return items
