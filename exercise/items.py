@@ -8,3 +8,4 @@ from scrapy.item import Item, Field
 class ExerciseItem(Item):
     title = Field()
     link = Field()
+

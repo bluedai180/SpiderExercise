@@ -9,9 +9,12 @@ import json
 class ExercisePipeline(object):
 
     def __init__(self):
-        self.file = codecs.open('jirou_data_utf8.json', 'wb', encoding='utf-8')
+        self.file = open('jirou.json', 'w', encoding='utf-8')
 
     def process_item(self, item, spider):
-        line = json.dumps(dict(item) + '\n')
-        self.file.write(line)
+        #line = json.dumps(dict(item)) + '\n'
+        for x in item["title"]:
+            #line = json.dumps(dict(("title", x.decode('utf-8')))) + '\n'
+            self.file.write("{ \"title\":\"%s\" },\n" % x.decode('utf-8'))
+
         return item
