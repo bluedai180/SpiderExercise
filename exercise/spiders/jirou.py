@@ -16,10 +16,11 @@ class DmozSpider(scrapy.Spider):
         for site in sites:
             item = ExerciseItem()
             title = site.xpath('span/text()').extract()
+            print(title)
             link = site.xpath('avatar/@href').extract()
-            item['title'] = [t.encode('utf-8') for t in title]
-            #item['link'] = [l.encode('utf-8') for l in link]
+            item['title'] = [t for t in title]
+            #item['link'] = [l for l in link]
 
             items.append(item)
-
+        print(items)
         return items
