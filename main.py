@@ -1,3 +1,3 @@
 from scrapy import cmdline
-cmdline.execute("scrapy crawl exercise".split())
-#cmdline.execute("scrapy crawl exercise -o items.json".split())
+cmdline.execute("scrapy crawl fitness".split())
+#cmdline.execute("scrapy crawl fitness -o items.json".split())
